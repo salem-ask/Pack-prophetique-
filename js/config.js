@@ -6,9 +6,15 @@
 // Lien de paiement Chariow — remplacez par le lien réel avant mise en ligne
 const CHARIOW_LINK = "https://chariow.com/INSERER-LE-LIEN-ICI";
 
-// Date/heure de fin de l'offre (heure locale du visiteur), format ISO 8601
-// Exemple : "2026-10-31T23:59:59"
-const OFFER_END_DATE = "2026-10-31T23:59:59";
+// Compte à rebours auto-renouvelable : durée d'un cycle en heures.
+// À l'expiration du cycle, le compteur repart automatiquement à 48h,
+// sans jamais afficher de durée négative ni de message de fin.
+const OFFER_DURATION_HOURS = 48;
+
+// Date/heure de référence (n'importe quelle date passée ou future) utilisée
+// pour caler le calendrier des cycles de 48h. La modifier décale l'heure à
+// laquelle chaque cycle se termine et redémarre.
+const OFFER_CYCLE_ANCHOR = "2026-01-01T00:00:00";
 
 // Identifiant Meta Pixel — laissez vide ("") si vous n'utilisez pas de Pixel
 const META_PIXEL_ID = "";
@@ -25,4 +31,4 @@ const images = {
 };
 
 // Ne pas modifier au-delà de cette ligne
-window.SITE_CONFIG = { CHARIOW_LINK, OFFER_END_DATE, META_PIXEL_ID, images };
+window.SITE_CONFIG = { CHARIOW_LINK, OFFER_DURATION_HOURS, OFFER_CYCLE_ANCHOR, META_PIXEL_ID, images };

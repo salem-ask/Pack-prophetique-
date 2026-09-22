@@ -25,15 +25,18 @@ Pour remplacer un visuel plus tard, déposez le nouveau fichier au même chemin
 Tout se règle dans **`js/config.js`** :
 
 ```js
-const CHARIOW_LINK = "https://chariow.com/...";   // lien de paiement réel
-const OFFER_END_DATE = "2026-10-31T23:59:59";     // date/heure de fin d'offre
-const META_PIXEL_ID = "";                          // ID Meta Pixel, ou "" pour désactiver
+const CHARIOW_LINK = "https://chariow.com/...";       // lien de paiement réel
+const OFFER_DURATION_HOURS = 48;                       // durée d'un cycle de compte à rebours
+const OFFER_CYCLE_ANCHOR = "2026-01-01T00:00:00";      // date de référence pour caler les cycles
+const META_PIXEL_ID = "";                              // ID Meta Pixel, ou "" pour désactiver
 ```
 
 - Tous les boutons d'achat (`data-cta`) utilisent automatiquement `CHARIOW_LINK`.
-- Le compte à rebours est calculé en temps réel à partir de `OFFER_END_DATE` et
-  ne se réinitialise jamais : une fois la date passée, la page affiche
-  « Cette offre est maintenant terminée. ».
+- Le compte à rebours est **auto-renouvelable** : il tourne en cycles de
+  `OFFER_DURATION_HOURS` heures (48h par défaut), calés sur `OFFER_CYCLE_ANCHOR`.
+  Dès qu'un cycle se termine, un nouveau cycle de 48h démarre aussitôt, en
+  continu — le compteur n'affiche jamais de valeur négative et ne s'arrête
+  jamais à zéro.
 - Si `META_PIXEL_ID` est vide, le site fonctionne normalement sans Meta Pixel.
   S'il est renseigné, les événements `PageView`, `ViewContent` (au chargement)
   et `InitiateCheckout` (au clic sur un CTA, avant la redirection) sont envoyés

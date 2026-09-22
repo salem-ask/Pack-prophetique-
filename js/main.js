@@ -3,7 +3,8 @@
 
   var CFG = window.SITE_CONFIG || {};
   var CHARIOW_LINK = CFG.CHARIOW_LINK || "#";
-  var OFFER_END_DATE = CFG.OFFER_END_DATE || "";
+  var OFFER_DURATION_HOURS = CFG.OFFER_DURATION_HOURS || 48;
+  var OFFER_CYCLE_ANCHOR = CFG.OFFER_CYCLE_ANCHOR || "";
   var META_PIXEL_ID = CFG.META_PIXEL_ID || "";
   var images = CFG.images || {};
 
@@ -74,40 +75,40 @@
   });
 
   /* ---------------------------------------------------------
-   * 3. Compte à rebours réel, non réinitialisable
+   * 3. Compte à rebours 48h auto-renouvelable
+   *
+   * Le cycle est calé sur OFFER_CYCLE_ANCHOR : à chaque expiration d'un
+   * cycle de OFFER_DURATION_HOURS, un nouveau cycle démarre aussitôt à
+   * 48h, indéfiniment. Le compteur n'affiche donc jamais de valeur
+   * négative et ne se bloque jamais à zéro.
    * --------------------------------------------------------- */
   function startCountdown() {
     var wrap = document.getElementById("countdown");
-    if (!wrap || !OFFER_END_DATE) return;
+    if (!wrap) return;
 
-    var endTime = new Date(OFFER_END_DATE).getTime();
-    if (isNaN(endTime)) return;
+    var durationMs = OFFER_DURATION_HOURS * 60 * 60 * 1000;
+    var anchor = OFFER_CYCLE_ANCHOR ? new Date(OFFER_CYCLE_ANCHOR).getTime() : 0;
+    if (isNaN(anchor)) anchor = 0;
 
     var elDays = document.getElementById("cd-days");
     var elHours = document.getElementById("cd-hours");
     var elMinutes = document.getElementById("cd-minutes");
     var elSeconds = document.getElementById("cd-seconds");
-    var expiredMsg = document.getElementById("countdown-expired");
-    var timerId = null;
 
     function pad(n) {
       return String(n).padStart(2, "0");
     }
 
+    function currentCycleEnd(now) {
+      var elapsed = now - anchor;
+      var cyclesPassed = Math.floor(elapsed / durationMs);
+      return anchor + (cyclesPassed + 1) * durationMs;
+    }
+
     function render() {
       var now = Date.now();
-      var diff = endTime - now;
-
-      if (diff <= 0) {
-        elDays.textContent = "00";
-        elHours.textContent = "00";
-        elMinutes.textContent = "00";
-        elSeconds.textContent = "00";
-        wrap.classList.add("countdown--expired");
-        if (expiredMsg) expiredMsg.hidden = false;
-        if (timerId) clearInterval(timerId);
-        return;
-      }
+      var diff = currentCycleEnd(now) - now;
+      if (diff < 0) diff = 0;
 
       var days = Math.floor(diff / (1000 * 60 * 60 * 24));
       var hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
@@ -121,7 +122,7 @@
     }
 
     render();
-    timerId = setInterval(render, 1000);
+    setInterval(render, 1000);
   }
   startCountdown();
 

@@ -73,17 +73,6 @@ section {
   position: relative;
 }
 
-.section-label {
-  display: inline-block;
-  font-family: var(--font-body);
-  font-size: 12px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-weight: 600;
-  margin-bottom: 14px;
-}
-
 .section-title {
   font-family: var(--font-display);
   font-size: clamp(26px, 5vw, 42px);
@@ -722,16 +711,6 @@ section {
   margin-top: 6px;
 }
 
-.countdown--expired .countdown__value {
-  color: var(--text-muted);
-}
-
-#countdown-expired {
-  color: var(--gold-bright);
-  font-family: var(--font-display);
-  font-size: 18px;
-  margin: 0 0 30px;
-}
 
 /* ---------------------------------------------------------
    FAQ
@@ -811,26 +790,22 @@ section {
 
 .final-cta {
   background:
-    radial-gradient(circle at 50% 0%, rgba(212, 175, 106, 0.15), transparent 60%),
-    linear-gradient(180deg, var(--navy) 0%, var(--black) 100%);
+    radial-gradient(circle at 50% 0%, rgba(212, 175, 106, 0.12), transparent 60%),
+    var(--navy);
   text-align: center;
   padding-bottom: 100px;
 }
 
-.final-cta__covers {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
+.final-cta__pack {
+  max-width: 300px;
   margin: 0 auto 36px;
-  max-width: 560px;
 }
 
-.final-cta__covers img {
-  width: 88px;
-  border-radius: 8px;
+.final-cta__pack img {
+  width: 100%;
+  border-radius: var(--radius-md);
   border: 1px solid rgba(212, 175, 106, 0.3);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-deep);
 }
 
 .final-cta__title {
