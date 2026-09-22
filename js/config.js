@@ -16,12 +16,12 @@ const META_PIXEL_ID = "";
 // Chemins des images — remplacez les fichiers dans /images par les visuels fournis
 // en conservant exactement ces noms de fichiers (ou mettez à jour les chemins ici).
 const images = {
-  hero: "images/hero/affiche-pack.svg",
-  book1: "images/books/livre-1-affaires.svg",
-  book2: "images/books/livre-2-guerison.svg",
-  book3: "images/books/livre-3-fertilite.svg",
-  book4: "images/books/livre-4-maison.svg",
-  book5: "images/books/livre-5-terrain.svg"
+  hero: "images/hero/affiche-pack.jpg",
+  book1: "images/books/livre-1-affaires.jpg",
+  book2: "images/books/livre-2-guerison.jpg",
+  book3: "images/books/livre-3-fertilite.jpg",
+  book4: "images/books/livre-4-maison.jpg",
+  book5: "images/books/livre-5-terrain.jpg"
 };
 
 // Ne pas modifier au-delà de cette ligne

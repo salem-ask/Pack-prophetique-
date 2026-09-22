@@ -3,24 +3,22 @@
 Landing page statique (HTML / CSS / JS vanilla, sans dépendance ni build) pour la
 vente du pack de 5 livres numériques chrétiens, avec redirection vers Chariow.
 
-## 1. Remplacer les images
+## 1. Images
 
-Toutes les images sont actuellement des **placeholders** (fonds bleu nuit/doré
-avec le nom du fichier à remplacer) — aucune couverture n'a été générée par IA,
-conformément à la consigne. Remplacez les fichiers suivants par les visuels
-fournis, **en conservant les mêmes noms** (ou mettez à jour `js/config.js`) :
+Les visuels fournis par l'utilisateur (affiche principale + 5 couvertures) sont
+déjà en place, tels quels, sans aucune modification ni retouche :
 
 | Emplacement | Rôle |
 |---|---|
-| `images/hero/affiche-pack.jpg` (ou `.svg`) | Affiche principale (Hero) |
-| `images/books/livre-1-affaires.jpg` | Couverture — Affaires |
-| `images/books/livre-2-guerison.jpg` | Couverture — Guérison |
-| `images/books/livre-3-fertilite.jpg` | Couverture — Fertilité & maternité |
-| `images/books/livre-4-maison.jpg` | Couverture — Construction de maison |
-| `images/books/livre-5-terrain.jpg` | Couverture — Acquisition de terrain |
+| `images/hero/affiche-pack.jpg` | Affiche principale (Hero) |
+| `images/books/livre-1-affaires.jpg` | Couverture — Tome 1, Affaires |
+| `images/books/livre-2-guerison.jpg` | Couverture — Tome 7, Guérison |
+| `images/books/livre-3-fertilite.jpg` | Couverture — Tome 6, Fertilité & maternité |
+| `images/books/livre-4-maison.jpg` | Couverture — Tome 10, Construction de maison |
+| `images/books/livre-5-terrain.jpg` | Couverture — Tome 9, Acquisition de terrain |
 
-Si vous changez les noms de fichiers, mettez à jour l'objet `images` dans
-`js/config.js`.
+Pour remplacer un visuel plus tard, déposez le nouveau fichier au même chemin
+(ou mettez à jour l'objet `images` dans `js/config.js` si vous changez les noms).
 
 ## 2. Configurer le lien Chariow, la date de fin d'offre et le Pixel
 
@@ -79,4 +77,5 @@ images/books/         5 couvertures
 - Aucune promesse garantie (richesse, guérison, fertilité, terrain, maison) —
   le contenu est présenté comme des enseignements et principes bibliques.
 - Les couvertures fournies ne doivent jamais être modifiées ni remplacées par
-  des visuels générés par IA.
+  des visuels générés par IA — les fichiers dans `images/` sont les visuels
+  originaux fournis, extraits sans retouche.
