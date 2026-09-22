@@ -3,8 +3,8 @@
  * Modifiez uniquement les valeurs ci-dessous pour adapter le site.
  */
 
-// Lien de paiement Chariow — remplacez par le lien réel avant mise en ligne
-const CHARIOW_LINK = "https://chariow.com/INSERER-LE-LIEN-ICI";
+// Lien de paiement Chariow
+const CHARIOW_LINK = "https://livres-spirit.mychariow.shop/prd_0oj05p8m/checkout";
 
 // Compte à rebours auto-renouvelable : durée d'un cycle en heures.
 // À l'expiration du cycle, le compteur repart automatiquement à 48h,
