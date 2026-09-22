@@ -934,12 +934,14 @@ section {
   .hero__visual {
     flex: 0 0 42%;
     margin: 0;
+    order: 1;
   }
 
   .hero__content {
     text-align: left;
     max-width: none;
     flex: 1;
+    order: 2;
   }
 
   .hero__cta-wrap {
